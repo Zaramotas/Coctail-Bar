@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Oswald:wght@200..700&family=Staatliches&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/styles.css">
+    <title>Random Coctai Generator</title>
+</head>
+<body>
+    <div class="body-container">
+        <div class="inside-container">
+            <div class="search-container container">
+                <form class="search-form" action="/search" method="get">
+                    <label class="search-txt txt" for="findCoctail">Coctail Name:</label>
+                    <input class="search-bar" type="search" id="findCoctail" placeholder="Search..." name="findCoctail">
+                    <button class="search-btn btn" type="submit">Search</button>
+                </form>
+                <form action="/" method="get">
+                    <button class="random-btn btn" type="submit">Random</button>
+                </form>
+            </div>           
+            <div class="top-container container">        
+                <img class="coctail-img" src="<%= content.strDrinkThumb %>" alt="<%= content.strDrink %>">
+                <h1 class="title title-txt txt"><%= content.strDrink %></h1>
+            </div>
+            <div class="mid-container container">   
+                <h2 class="title-txt txt">Ingridients:</h2> 
+                <hr> 
+                <ul class="recept-list">
+                    <% for (let i = 1; i < 15; ++i) {%>
+                        <% if (content["strIngredient" + i] && content["strMeasure" + i]) { %>
+                        <li class="small-txt txt"><%= content["strMeasure" + i] %> <%= content["strIngredient" + i]%> </li>
+                    <% }}; %>
+                </ul>
+            </div>    
+            <div class="bot-container container">
+                <h2 class="title-txt txt">Insructions:</h2>
+                <hr> 
+                <p class="rcp-description small-txt txt"><%= content.strInstructions %></p>    
+            </div>
+        </div>    
+    </div>   
+</body>
+</html>
